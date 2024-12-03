@@ -15,6 +15,7 @@ def calculate_entropy(data,target_col):
     return entropy
 
 def calculate_information_gain(data,attribute,target_col):
+    
     total_entropy=calculate_entropy(data,target_col)
     attribute_values=set(row[attribute] for row in data)
     weighted_entropy=0

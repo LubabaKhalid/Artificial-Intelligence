@@ -1,3 +1,5 @@
+import random
+
 def initialize_population(pop_size, string_length):
     population = []
     for _ in range(pop_size):
