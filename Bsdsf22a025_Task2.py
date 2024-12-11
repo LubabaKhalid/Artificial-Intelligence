@@ -6,9 +6,9 @@ def calculate_slope(X,Y,mean_X,mean_Y):
     denominator=sum((X[i]-mean_X)** 2 for i in range(len(X)))
     return numerator/denominator
 def calculate_intercept(mean_X,mean_Y,slope):
-    return mean_Y - slope * mean_X
+    return mean_Y-slope*mean_X
 def predict(X, theta_0, theta_1):
-    return [theta_0 + theta_1 * x for x in X]
+    return [theta_0+theta_1 * x for x in X]
 def calculate_mse(Y, Y_pred):
     return sum((Y[i] - Y_pred[i]) ** 2 for i in range(len(Y))) / len(Y)
 def fit_linear_regression(X, Y):

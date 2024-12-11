@@ -1,7 +1,5 @@
 import math
 import random
-
-# Calculate entropy of a dataset
 def calculate_entropy(data, target_col):
     total_count = len(data)
     value_counts = {}
