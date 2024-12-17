@@ -4,7 +4,7 @@ def calculate_mean(values):
     return np.mean(values)
 
 def calculate_slope(X,Y,mean_X,mean_Y):
-    numerator=np.sum((X -mean_X)*(Y-mean_Y))
+    numerator=np.sum((X-mean_X)*(Y-mean_Y))
     denominator=np.sum((X-mean_X)**2)
     return numerator/denominator
 
