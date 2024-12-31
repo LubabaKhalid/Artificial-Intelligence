@@ -3,40 +3,40 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
 def sigmoid(z):
-    return 1 / (1+np.exp(-z))
+    return 1/(1+np.exp(-z))
 
 def cross_entropy_loss(y_true,y_pred):
-    epsilon = 1e-15
-    y_pred = np.clip(y_pred,epsilon,1-epsilon)
-    loss = - np.mean(y_true*np.log(y_pred)+(1-y_true)*np.log(1-y_pred))
+    epsilon=1e-15
+    y_pred=np.clip(y_pred,epsilon,1-epsilon)
+    loss=-np.mean(y_true*np.log(y_pred)+(1-y_true)*np.log(1-y_pred))
     return loss
 
 def gradient_descent(X,y,weights,learning_rate, iterations):
-    m = len(y)
+    m=len(y)
     for i in range(iterations):
-        z = np.dot(X, weights)
-        y_pred = sigmoid(z)
-        gradient = (1/m) * np.dot(X.T, (y_pred - y))
-        weights -= learning_rate * gradient
-        if i % 100 == 0:
-            loss = cross_entropy_loss(y, y_pred)
+        z=np.dot(X,weights)
+        y_pred=sigmoid(z)
+        gradient=(1/m)*np.dot(X.T,(y_pred-y))
+        weights-=learning_rate*gradient
+        if i%100==0:
+            loss=cross_entropy_loss(y,y_pred)
             print(f"Iteration {i}, Loss: {loss}")
     return weights
 
-def predict(X, weights):
-    z = np.dot(X, weights)
-    y_pred = sigmoid(z)
+def predict(X,weights):
+    z=np.dot(X,weights)
+    y_pred=sigmoid(z)
     return (y_pred >= 0.5).astype(int)
 
 def logistic_regression(X, y, learning_rate=0.01, iterations=1000):
-    m, n = X.shape
-    weights = np.zeros(n)
-    weights = gradient_descent(X, y, weights, learning_rate, iterations)
+    m,n=X.shape
+    weights=np.zeros(n)
+    weights=gradient_descent(X, y, weights, learning_rate, iterations)
     return weights
 
 def evaluate(y_true, y_pred):
-    accuracy = np.mean(y_true == y_pred)
-    loss = cross_entropy_loss(y_true, y_pred)
+    accuracy=np.mean(y_true == y_pred)
+    loss=cross_entropy_loss(y_true, y_pred)
     return accuracy, loss
 
 if __name__ == "__main__":
